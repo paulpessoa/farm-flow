@@ -1,0 +1,46 @@
+{
+  "farms": [
+    {
+      "id": "1",
+      "farmName": "Farm 1",
+      "landArea": 100,
+      "landUnit": "hectares",
+      "cropProductions": [
+        {
+          "id": 1,
+          "cropTypeId": 1,
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 2,
+          "cropTypeId": 2,
+          "isIrrigated": true,
+          "isInsured": false
+        }
+      ]
+    }
+  ],
+  "crop-types": [
+    {
+      "id": "1",
+      "name": "RICE"
+    },
+    {
+      "id": "2",
+      "name": "BEANS"
+    },
+    {
+      "id": "3",
+      "name": "CORN"
+    },
+    {
+      "id": "4",
+      "name": "COFFEE"
+    },
+    {
+      "id": "5",
+      "name": "SOYBEAN"
+    }
+  ]
+}
