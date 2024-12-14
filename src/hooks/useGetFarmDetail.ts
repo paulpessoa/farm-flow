@@ -14,7 +14,7 @@ export const useGetFarmDetail = (id: string) => {
   });
 
   return {
-    farm: farmQuery.data,
+    data: farmQuery.data,
     cropTypes: cropTypesQuery.data,
     isLoading: farmQuery.isLoading || cropTypesQuery.isLoading,
     error: farmQuery.error || cropTypesQuery.error,

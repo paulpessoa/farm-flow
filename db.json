@@ -2,9 +2,21 @@
   "farms": [
     {
       "id": "1",
-      "farmName": "Farm 1",
+      "farmName": "Paragominas Farm",
       "landArea": 100,
       "landUnit": "hectares",
+      "address": {
+        "fullAddress": "Fazenda Paragominas, Pará",
+        "latitude": -2.9964,
+        "longitude": -47.3532,
+        "coordinates": [
+          [-2.896, -47.393],
+          [-2.897, -47.384],
+          [-2.858, -47.362],
+          [-3.096, -47.293],
+          [-3.058, -47.353]
+        ]
+      },
       "cropProductions": [
         {
           "id": 1,
@@ -19,28 +31,160 @@
           "isInsured": false
         }
       ]
+    },
+    {
+      "id": "30f3",
+      "farmName": "Bom Futuro Farm",
+      "landArea": 31,
+      "landUnit": "hectares",
+      "address": {
+        "fullAddress": "Fazenda Bom Futuro, Paraná",
+        "latitude": -25.2521,
+        "longitude": -52.0215,
+        "coordinates": [
+          [-25.252, -52.021],
+          [-25.251, -52.022],
+          [-25.253, -52.023],
+          [-25.252, -52.021]
+        ]
+      },
+      "cropProductions": [
+        {
+          "cropTypeId": 3,
+          "isIrrigated": true,
+          "isInsured": true,
+          "id": 1
+        },
+        {
+          "cropTypeId": 4,
+          "isIrrigated": false,
+          "isInsured": true,
+          "id": 2
+        },
+        {
+          "cropTypeId": 5,
+          "isIrrigated": false,
+          "isInsured": false,
+          "id": 3
+        },
+        {
+          "cropTypeId": 1,
+          "isIrrigated": false,
+          "isInsured": false,
+          "id": 4
+        }
+      ],
+      "createdAt": "2024-12-13T04:38:21.369Z"
+    },
+    {
+      "id": "1f77",
+      "farmName": "Boa Vista Farm",
+      "landArea": 433,
+      "landUnit": "hectares",
+      "address": {
+        "fullAddress": "Fazenda Boa Vista, Rio Grande do Sul",
+        "latitude": -29.94,
+        "longitude": -51.115,
+        "coordinates": [
+          [-29.94, -51.115],
+          [-29.939, -51.116],
+          [-29.941, -51.114],
+          [-29.94, -51.115]
+        ]
+      },
+      "cropProductions": [
+        {
+          "cropTypeId": 1,
+          "isIrrigated": true,
+          "isInsured": false,
+          "id": 1
+        },
+        {
+          "cropTypeId": 2,
+          "isIrrigated": true,
+          "isInsured": false,
+          "id": 2
+        },
+        {
+          "cropTypeId": 3,
+          "isIrrigated": false,
+          "isInsured": true,
+          "id": 3
+        },
+        {
+          "cropTypeId": 1,
+          "isIrrigated": false,
+          "isInsured": true,
+          "id": 4
+        }
+      ],
+      "createdAt": "2024-12-13T14:18:37.345Z"
+    },
+    {
+      "id": "2475",
+      "farmName": "Triunfo Farm",
+      "landArea": 245,
+      "landUnit": "hectares",
+      "address": {
+        "fullAddress": "Fazenda Triunfo, Pernambuco",
+        "latitude": -7.8317,
+        "longitude": -38.1117,
+        "coordinates": [
+          [-7.832, -38.112],
+          [-7.833, -38.113],
+          [-7.834, -38.111],
+          [-7.832, -38.112]
+        ]
+      },
+      "cropProductions": [
+        {
+          "id": 1,
+          "cropTypeId": 1,
+          "isIrrigated": true,
+          "isInsured": true
+        },
+        {
+          "id": 2,
+          "cropTypeId": 3,
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 3,
+          "cropTypeId": 2,
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 4,
+          "cropTypeId": 5,
+          "isIrrigated": false,
+          "isInsured": true
+        }
+      ],
+      "createdAt": "2024-12-13T17:03:37.942Z"
     }
   ],
   "crop-types": [
     {
       "id": "1",
-      "name": "RICE"
+      "name": "Rice"
     },
     {
       "id": "2",
-      "name": "BEANS"
+      "name": "Beans"
     },
     {
       "id": "3",
-      "name": "CORN"
+      "name": "Corn"
     },
     {
       "id": "4",
-      "name": "COFFEE"
+      "name": "Coffee"
     },
     {
       "id": "5",
-      "name": "SOYBEAN"
+      "name": "Soybean"
     }
   ]
 }
