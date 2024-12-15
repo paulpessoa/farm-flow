@@ -15,8 +15,13 @@ export const getFarmById = async (id: string): Promise<Farm> => {
   return response.data;
 };
 
-export const createFarm = async (farm: Omit<Farm, "id">): Promise<Farm> => {
+export const postFarm = async (farm: Omit<Farm, "id">): Promise<Farm> => {
   const response = await api.post<Farm>("/farms", farm);
+  return response.data;
+};
+
+export const putFarm = async (farm: Farm): Promise<Farm> => {
+  const response = await api.put<Farm>(`/farms/${farm.id}`, farm);
   return response.data;
 };
 

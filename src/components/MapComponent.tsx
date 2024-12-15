@@ -1,40 +1,29 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polygon } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-
-
-interface MapProps {
-    farmName: string;
-    latitude: number;
-    longitude: number;
-    coordinates: [number, number][]
+import { Farm } from '../types';
+interface MapComponentProps {
+    farm: Farm; // O componente espera receber um objeto do tipo Farm como prop
 }
 
-export const MapComponent: React.FC<MapProps> = ({ farmName, latitude, longitude, coordinates }) => {
+export const MapComponent: React.FC<MapComponentProps> = ({ farm }) => {
+    if (!farm?.address) return <>Error loading map</>
     return (
         <MapContainer
-            center={[latitude, longitude]}
+            center={[farm.address.latitude, farm.address.longitude]}
             zoom={10}
             scrollWheelZoom={false}
-            style={{ height: '400px', width: '100%' }}
+            className="h-[400px] w-full z-0"
         >
             <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={[latitude, longitude]}>
+            <Marker position={[farm.address.latitude, farm.address.longitude]}>
                 <Popup>
-                    {farmName ?? "Localização encontrada"}
+                    {farm.farmName} <br /> {farm.address.fullAddress}
                 </Popup>
             </Marker>
-            <Polygon
-                positions={coordinates ?? [0, 0]}
-                pathOptions={{
-                    color: 'blue',
-                    fillColor: 'blue',
-                    fillOpacity: 0.2,
-                }}
-            />
         </MapContainer>
     );
 };

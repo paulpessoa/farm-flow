@@ -1,11 +1,11 @@
 export interface Farm {
-  id: string;
+  id?: string;
   farmName: string;
-  landArea: number;
-  landUnit: string;
+  landArea?: number;
+  landUnit?: string;
   address: Address;
-  cropProductions: CropProduction[];
-  createdAt: string;
+  cropProductions?: CropProduction[];
+  createdAt?: string;
 }
 
 export interface CropProduction {
@@ -24,5 +24,5 @@ export interface Address {
   fullAddress?: string;
   latitude: number;
   longitude: number;
-  coordinates: [number, number][]
+  coordinates?: [number, number][]
 }

@@ -2,7 +2,7 @@ import { Droplet, Shield, Wheat, Leaf } from 'lucide-react';
 import { useGetFarmDetail } from '../hooks/useGetFarmDetail';
 import { getCropTypeName } from '../utils/cropTypes';
 import { MapComponent } from './MapComponent';
-import { TrashIcon } from "lucide-react";
+
 
 interface FarmDetailProps {
   farmId: string;
@@ -74,22 +74,12 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
 
       <div className="h-[400px] rounded-lg overflow-hidden">
         <MapComponent
-          coordinates={farm.address.coordinates}
-          farmName={farm.farmName} latitude={farm.address.latitude} longitude={farm.address.longitude}
+          farm={farm}
         />
       </div>
-      <div className="min-w-full flex items-center justify-center mt-6">
-        <button
-          type="button"
-          // onClick={addCropProduction}
-          className="flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200"> <TrashIcon className="mr-2 h-4 w-4" />
-          Farm Delete
-        </button>
-      </div >
     </div >
 
   );
 };
 
 export default FarmDetail;
-

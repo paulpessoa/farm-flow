@@ -31,7 +31,7 @@ const GenericModal: React.FC<GenericModalProps> = ({
                 className={`relative w-full max-w-prose bg-white rounded-xl shadow-lg p-2 flex flex-col max-h-[90vh] ${className}`}
             >
                 {/* Header */}
-                <div className="flex justify-between items-center pb-3 px-2 pt-2 sticky top-0 bg-white z-10">
+                <div className="flex justify-between items-center pb-3 px-6 pt-4 sticky top-0 bg-white z-10">
                     <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
                     <button
                         onClick={onClose}
