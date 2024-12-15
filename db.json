@@ -16,19 +16,21 @@
           "cropTypeId": 1,
           "isIrrigated": true,
           "isInsured": false,
-          "area": 12
+          "area": 12,
+          "unit": "acres"
         },
         {
           "id": 2,
-          "cropTypeId": 2,
+          "cropTypeId": 1,
           "isIrrigated": true,
-          "isInsured": false,
-          "area": 21
+          "isInsured": true,
+          "area": 21,
+          "unit": "acres"
         }
       ],
       "totalLandArea": 13.354646810060501,
       "totalLandUnit": "hectares",
-      "createdAt": "2024-12-15T04:58:04.960Z"
+      "createdAt": "2024-12-15T07:12:22.462Z"
     },
     {
       "id": "1f77",
@@ -42,36 +44,40 @@
       },
       "cropProductions": [
         {
-          "cropTypeId": 1,
-          "isIrrigated": true,
-          "isInsured": false,
-          "id": 1,
-          "area": 22
-        },
-        {
           "cropTypeId": 2,
           "isIrrigated": true,
           "isInsured": false,
+          "id": 1,
+          "area": 25,
+          "unit": "acres"
+        },
+        {
+          "cropTypeId": 4,
+          "isIrrigated": true,
+          "isInsured": false,
           "id": 2,
-          "area": 33
+          "area": 33,
+          "unit": "acres"
         },
         {
           "cropTypeId": 3,
           "isIrrigated": false,
           "isInsured": true,
           "id": 3,
-          "area": 32
+          "area": 32,
+          "unit": "hectares"
         },
         {
           "cropTypeId": 1,
           "isIrrigated": false,
           "isInsured": true,
           "id": 4,
-          "area": 32
+          "area": 32,
+          "unit": "hectares"
         }
       ],
-      "createdAt": "2024-12-15T04:58:17.308Z",
-      "totalLandArea": 48.15766576961211,
+      "createdAt": "2024-12-15T07:12:52.695Z",
+      "totalLandArea": 87.47180348434875,
       "totalLandUnit": "hectares"
     },
     {
@@ -87,29 +93,116 @@
       "cropProductions": [
         {
           "id": 1,
-          "cropTypeId": 4,
-          "isIrrigated": true,
-          "isInsured": false,
-          "area": 323
+          "cropTypeId": 2,
+          "isIrrigated": false,
+          "isInsured": true,
+          "area": 322,
+          "unit": "acres"
         },
         {
           "id": 2,
           "cropTypeId": 1,
-          "isIrrigated": false,
+          "isIrrigated": true,
           "isInsured": true,
-          "area": 32
+          "area": 2323,
+          "unit": "acres"
         },
         {
           "id": 3,
-          "cropTypeId": 3,
-          "isIrrigated": true,
+          "cropTypeId": 4,
+          "isIrrigated": false,
           "isInsured": true,
-          "area": 44
+          "area": 46,
+          "unit": "acres"
+        },
+        {
+          "id": 4,
+          "cropTypeId": 3,
+          "area": 3,
+          "unit": "acres",
+          "isIrrigated": true,
+          "isInsured": false
         }
       ],
-      "createdAt": "2024-12-15T05:03:27.135Z",
-      "totalLandArea": 161.4698205216406,
+      "createdAt": "2024-12-15T07:12:03.000Z",
+      "totalLandArea": 1090.2248032213029,
       "totalLandUnit": "hectares"
+    },
+    {
+      "id": "50df",
+      "farmName": "Madagascar Farm",
+      "totalLandArea": 2771416.0117,
+      "totalLandUnit": "acres",
+      "address": {
+        "latitude": -18.9249604,
+        "longitude": 46.4416422,
+        "fullAddress": "Madagascar"
+      },
+      "cropProductions": [
+        {
+          "id": 1,
+          "cropTypeId": 4,
+          "area": 1121111,
+          "unit": "hectares",
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 2,
+          "cropTypeId": 3,
+          "area": 441,
+          "unit": "hectares",
+          "isIrrigated": true,
+          "isInsured": true
+        },
+        {
+          "id": 3,
+          "cropTypeId": 1,
+          "area": 2,
+          "unit": "hectares",
+          "isIrrigated": false,
+          "isInsured": false
+        }
+      ],
+      "createdAt": "2024-12-15T07:09:29.055Z"
+    },
+    {
+      "id": "cc2d",
+      "farmName": "Rondonopolis",
+      "totalLandArea": 7698.4514,
+      "totalLandUnit": "acres",
+      "address": {
+        "latitude": -25.4295963,
+        "longitude": -49.2712724,
+        "fullAddress": "Curitiba"
+      },
+      "cropProductions": [
+        {
+          "id": 1,
+          "cropTypeId": 2,
+          "area": 6542,
+          "unit": "acres",
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 2,
+          "cropTypeId": 4,
+          "area": 234,
+          "unit": "hectares",
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 3,
+          "cropTypeId": 1,
+          "area": 234,
+          "unit": "hectares",
+          "isIrrigated": true,
+          "isInsured": false
+        }
+      ],
+      "createdAt": "2024-12-15T07:16:03.938Z"
     }
   ],
   "crop-types": [

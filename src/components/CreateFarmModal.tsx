@@ -180,7 +180,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen,
             <input
               type="text"
               id='totalCropArea'
-              value={`${totalCropArea.toFixed(2)} ${totalLandUnit}`}
+              value={`${totalCropArea.toLocaleString()} ${totalLandUnit}`}
               readOnly
               className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 px-3 py-2"
             />

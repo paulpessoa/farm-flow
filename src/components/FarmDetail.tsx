@@ -22,7 +22,7 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-primary">{farm.farmName}</h1>
         <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-          {`${farm?.totalLandArea?.toFixed(2)} ${farm.totalLandUnit}`}
+          {`${farm?.totalLandArea?.toLocaleString()} ${farm.totalLandUnit}`}
         </span>
       </div>
 
@@ -41,7 +41,7 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
                 </span>
               </div>
               <span className="text-gray-500 text-sm">
-                {`${production.area} ${production.unit}`}</span>
+                {`${production.area.toLocaleString()} ${production.unit}`}</span>
             </div>
 
             <div className="grid grid-cols-2 gap-4">

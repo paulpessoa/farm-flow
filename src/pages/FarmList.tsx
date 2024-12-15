@@ -100,7 +100,7 @@ const FarmList: React.FC = () => {
                     {farm.farmName}
                   </h3>
                   <p className="text-gray-600">
-                    {farm.landArea} {farm.landUnit}
+                    {farm.totalLandArea?.toLocaleString()} {farm.totalLandUnit}
                   </p>
                 </div>
                 <div className="flex items-center space-x-2"> {/* Added space between buttons */}
