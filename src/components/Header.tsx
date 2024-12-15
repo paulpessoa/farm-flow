@@ -1,22 +1,16 @@
-'use client'
 import { useState } from 'react'
 import CreateFarmModal from './CreateFarmModal'
 import { Leaf } from "lucide-react";
-
 
 const Header: React.FC = () => {
   const [isFarmModalOpen, setIsFarmModalOpen] = useState<boolean>(false);
   return (
     <header className="bg-indigo-950">
       <nav aria-label="Global" className="mx-auto flex container items-center justify-between p-6">
-        <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Farm Flow</span>
-            <img
-              alt=""
-              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto"
-            />
+        <div className="flex items-center">
+          <a href="/" className="flex items-center">
+            <Leaf className="h-8 w-8 mr-3 text-orange-400" />
+            <span className="text-white text-xl font-bold">Farm Flow</span>
           </a>
         </div>
 

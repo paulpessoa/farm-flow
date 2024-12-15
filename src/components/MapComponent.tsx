@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Farm } from '../types';
 interface MapComponentProps {
-    farm: Farm; // O componente espera receber um objeto do tipo Farm como prop
+    farm: Farm;
 }
 
 export const MapComponent: React.FC<MapComponentProps> = ({ farm }) => {
@@ -11,7 +11,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({ farm }) => {
     return (
         <MapContainer
             center={[farm.address.latitude, farm.address.longitude]}
-            zoom={10}
+            zoom={12}
             scrollWheelZoom={false}
             className="h-[400px] w-full z-0"
         >

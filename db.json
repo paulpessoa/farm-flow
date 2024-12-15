@@ -6,75 +6,29 @@
       "landArea": 100,
       "landUnit": "hectares",
       "address": {
-        "fullAddress": "Fazenda Paragominas, Pará",
         "latitude": -2.9964,
         "longitude": -47.3532,
-        "coordinates": [
-          [-2.896, -47.393],
-          [-2.897, -47.384],
-          [-2.858, -47.362],
-          [-3.096, -47.293],
-          [-3.058, -47.353]
-        ]
+        "fullAddress": "Fazenda Paragominas, Pará"
       },
       "cropProductions": [
         {
           "id": 1,
           "cropTypeId": 1,
           "isIrrigated": true,
-          "isInsured": false
+          "isInsured": false,
+          "area": 12
         },
         {
           "id": 2,
           "cropTypeId": 2,
           "isIrrigated": true,
-          "isInsured": false
-        }
-      ]
-    },
-    {
-      "id": "30f3",
-      "farmName": "Bom Futuro Farm",
-      "landArea": 31,
-      "landUnit": "hectares",
-      "address": {
-        "fullAddress": "Fazenda Bom Futuro, Paraná",
-        "latitude": -25.2521,
-        "longitude": -52.0215,
-        "coordinates": [
-          [-25.252, -52.021],
-          [-25.251, -52.022],
-          [-25.253, -52.023],
-          [-25.252, -52.021]
-        ]
-      },
-      "cropProductions": [
-        {
-          "cropTypeId": 3,
-          "isIrrigated": true,
-          "isInsured": true,
-          "id": 1
-        },
-        {
-          "cropTypeId": 4,
-          "isIrrigated": false,
-          "isInsured": true,
-          "id": 2
-        },
-        {
-          "cropTypeId": 5,
-          "isIrrigated": false,
           "isInsured": false,
-          "id": 3
-        },
-        {
-          "cropTypeId": 1,
-          "isIrrigated": false,
-          "isInsured": false,
-          "id": 4
+          "area": 21
         }
       ],
-      "createdAt": "2024-12-13T04:38:21.369Z"
+      "totalLandArea": 13.354646810060501,
+      "totalLandUnit": "hectares",
+      "createdAt": "2024-12-15T04:58:04.960Z"
     },
     {
       "id": "1f77",
@@ -82,87 +36,80 @@
       "landArea": 433,
       "landUnit": "hectares",
       "address": {
-        "fullAddress": "Fazenda Boa Vista, Rio Grande do Sul",
         "latitude": -29.94,
         "longitude": -51.115,
-        "coordinates": [
-          [-29.94, -51.115],
-          [-29.939, -51.116],
-          [-29.941, -51.114],
-          [-29.94, -51.115]
-        ]
+        "fullAddress": "Fazenda Boa Vista, Rio Grande do Sul"
       },
       "cropProductions": [
         {
           "cropTypeId": 1,
           "isIrrigated": true,
           "isInsured": false,
-          "id": 1
+          "id": 1,
+          "area": 22
         },
         {
           "cropTypeId": 2,
           "isIrrigated": true,
           "isInsured": false,
-          "id": 2
+          "id": 2,
+          "area": 33
         },
         {
           "cropTypeId": 3,
           "isIrrigated": false,
           "isInsured": true,
-          "id": 3
+          "id": 3,
+          "area": 32
         },
         {
           "cropTypeId": 1,
           "isIrrigated": false,
           "isInsured": true,
-          "id": 4
+          "id": 4,
+          "area": 32
         }
       ],
-      "createdAt": "2024-12-13T14:18:37.345Z"
+      "createdAt": "2024-12-15T04:58:17.308Z",
+      "totalLandArea": 48.15766576961211,
+      "totalLandUnit": "hectares"
     },
     {
-      "id": "2475",
-      "farmName": "Triunfo Farm",
-      "landArea": 245,
+      "id": "47d8",
+      "farmName": "Fazenda nao me deixes",
+      "landArea": 400,
       "landUnit": "hectares",
       "address": {
-        "fullAddress": "Fazenda Triunfo, Pernambuco",
-        "latitude": -7.8317,
-        "longitude": -38.1117,
-        "coordinates": [
-          [-7.832, -38.112],
-          [-7.833, -38.113],
-          [-7.834, -38.111],
-          [-7.832, -38.112]
-        ]
+        "latitude": -4.9751759,
+        "longitude": -38.6368754,
+        "fullAddress": "Ibicuitinga"
       },
       "cropProductions": [
         {
           "id": 1,
-          "cropTypeId": 1,
+          "cropTypeId": 4,
           "isIrrigated": true,
-          "isInsured": true
+          "isInsured": false,
+          "area": 323
         },
         {
           "id": 2,
-          "cropTypeId": 3,
-          "isIrrigated": true,
-          "isInsured": false
+          "cropTypeId": 1,
+          "isIrrigated": false,
+          "isInsured": true,
+          "area": 32
         },
         {
           "id": 3,
-          "cropTypeId": 2,
+          "cropTypeId": 3,
           "isIrrigated": true,
-          "isInsured": false
-        },
-        {
-          "id": 4,
-          "cropTypeId": 5,
-          "isIrrigated": false,
-          "isInsured": true
+          "isInsured": true,
+          "area": 44
         }
       ],
-      "createdAt": "2024-12-13T17:03:37.942Z"
+      "createdAt": "2024-12-15T05:03:27.135Z",
+      "totalLandArea": 161.4698205216406,
+      "totalLandUnit": "hectares"
     }
   ],
   "crop-types": [

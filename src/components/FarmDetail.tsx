@@ -3,7 +3,6 @@ import { useGetFarmDetail } from '../hooks/useGetFarmDetail';
 import { getCropTypeName } from '../utils/cropTypes';
 import { MapComponent } from './MapComponent';
 
-
 interface FarmDetailProps {
   farmId: string;
 }
@@ -15,6 +14,7 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
   if (isLoading) return <div className="flex justify-center p-8">Loading...</div>;
   if (error) return <div className="flex justify-center p-8 text-red-500">Error farm detail</div>;
   if (!farm) return <div className="flex justify-center p-8">Farm not found</div>;
+  if (!farm.cropProductions) return <div className="flex justify-center p-8">Crop Production not found</div>;
 
   return (
 
@@ -22,7 +22,7 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-primary">{farm.farmName}</h1>
         <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-          Own
+          {`${farm?.totalLandArea?.toFixed(2)} ${farm.totalLandUnit}`}
         </span>
       </div>
 
@@ -40,10 +40,8 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
                   {getCropTypeName(cropTypes, String(production.cropTypeId))}
                 </span>
               </div>
-              <span className="text-xl font-bold">
-                {/* TODO: Add individual crop area
-                {production.area ?? "-"} <span className="text-gray-500 text-sm">ha</span> */}
-              </span>
+              <span className="text-gray-500 text-sm">
+                {`${production.area} ${production.unit}`}</span>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -63,7 +61,7 @@ const FarmDetail: React.FC<FarmDetailProps> = ({
                   <span className="font-medium">Insured</span>
                 </div>
                 <span className={`block text-sm text-center ${production.isInsured ? 'text-green-800' : 'text-red-800'}`}>
-                  {production.isInsured ? 'yes' : 'No'}
+                  {production.isInsured ? 'Yes' : 'No'}
                 </span>
               </div>
             </div>

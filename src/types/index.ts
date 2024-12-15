@@ -1,8 +1,10 @@
 export interface Farm {
-  id?: string;
-  farmName: string;
   landArea?: number;
   landUnit?: string;
+  id?: string;
+  farmName: string;
+  totalLandArea?: number;
+  totalLandUnit?: "hectares" | "acres";
   address: Address;
   cropProductions?: CropProduction[];
   createdAt?: string;
@@ -11,6 +13,8 @@ export interface Farm {
 export interface CropProduction {
   id: number;
   cropTypeId: number;
+  area: number;
+  unit: "hectares" | "acres";
   isIrrigated: boolean;
   isInsured: boolean;
 }
@@ -24,5 +28,5 @@ export interface Address {
   fullAddress?: string;
   latitude: number;
   longitude: number;
-  coordinates?: [number, number][]
+  coordinates?: [number, number][];
 }

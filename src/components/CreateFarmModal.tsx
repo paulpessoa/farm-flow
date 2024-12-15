@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Leaf, LandPlotIcon, MapPinHouseIcon } from 'lucide-react';
 import { usePostFarm } from '../hooks/usePostFarm';
 import { geocodeAddress } from '../services/geocoding';
@@ -8,66 +8,122 @@ import { useQuery } from '@tanstack/react-query';
 import { MapComponent } from './MapComponent';
 import GenericModal from './GenericModal';
 import { toast } from 'react-toastify';
-
+import { usePutFarm } from '../hooks/usePutFarm';
 
 interface CreateFarmModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialFarm?: Farm;
 }
 
-const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) => {
+const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen,
+  onClose,
+  initialFarm }) => {
   const createFarmMutation = usePostFarm();
+  const updateFarmMutation = usePutFarm();
   const { data: cropTypes } = useQuery<CropType[]>({
     queryKey: ['cropTypes'],
     queryFn: getCropTypes
   });
 
-  const [farmName, setFarmName] = useState('');
-  const [landArea, setLandArea] = useState('');
-  const [landUnit, setLandUnit] = useState('hectares');
+  const [farmName, setFarmName] = useState(initialFarm?.farmName || '');
+  const [totalLandUnit, setTotalLandUnit] = useState<'hectares' | 'acres'>(
+    initialFarm?.totalLandUnit || 'hectares'
+  );
   const [addressDetails, setAddressDetails] = useState<Address>({
-    latitude: 53.0017819,
-    longitude: -0.1142127,
-    fullAddress: "Hill Farm"
+    latitude: initialFarm?.address.latitude || 53.0017819,
+    longitude: initialFarm?.address.longitude || -0.1142127,
+    fullAddress: initialFarm?.address.fullAddress || ""
   });
-  const [address, setAddress] = useState('');
-  const [cropProductions, setCropProductions] = useState<CropProduction[]>([]);
+  const [address, setAddress] = useState(addressDetails.fullAddress || '');
+  const [cropProductions, setCropProductions] = useState<CropProduction[]>(
+    initialFarm?.cropProductions || []
+  );
 
-  const handleAddressSearch = async () => {
-    const geoResult = await geocodeAddress(address);
-    if (geoResult) {
-      setAddressDetails(geoResult);
-    } else {
-      alert('Address not found. Please try a different address.');
-    }
+  // Utility function to convert between hectares and acres
+  const convertArea = (value: number, fromUnit: 'hectares' | 'acres', toUnit: 'hectares' | 'acres'): number => {
+    if (fromUnit === toUnit) return value;
+    return fromUnit === 'hectares'
+      ? value * 2.47105 // hectares to acres
+      : value / 2.47105; // acres to hectares
   };
 
+  // Calculate total land area across all crop productions
+  const totalCropArea = useMemo(() => {
+    return cropProductions.reduce((total, production) => {
+      const convertedArea = convertArea(production.area, production.unit, totalLandUnit);
+      return total + convertedArea;
+    }, 0);
+  }, [cropProductions, totalLandUnit]);
 
+  const handleAddressSearch = useCallback(async () => {
+    try {
+      const geoResult = await geocodeAddress(address);
+      if (geoResult) {
+        // Update both address details and the full address string
+        setAddressDetails({
+          latitude: geoResult.latitude,
+          longitude: geoResult.longitude,
+          fullAddress: geoResult.fullAddress || address
+        });
+        setAddress(geoResult.fullAddress || address);
+      } else {
+        toast.error('Address not found. Please try a different address.');
+      }
+    } catch (error) {
+      toast.error('Error searching address');
+      console.error('Address search error:', error);
+    }
+  }, [address]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newFarm: Omit<Farm, 'id'> = {
+    const farmData: Omit<Farm, 'id'> = {
       farmName,
-      landArea: Number(landArea),
-      landUnit,
+      totalLandArea: totalCropArea,
+      totalLandUnit,
       address: addressDetails,
       cropProductions: cropProductions.map((cp, index) => ({ ...cp, id: index + 1 })),
       createdAt: new Date().toISOString(),
     };
-    createFarmMutation.mutate(newFarm, {
-      onSuccess: () => {
-        toast.success('Farm created successfully!');
-        onClose(); // Close modal on successful creation
-      },
-      onError: (error) => {
-        toast.error('Failed to create farm. Please try again.');
-        console.error('Farm creation error:', error);
-      }
-    });
+
+    if (initialFarm) {
+      updateFarmMutation.mutate({ ...initialFarm, ...farmData }, {
+        onSuccess: () => {
+          toast.success('Farm updated successfully!');
+          onClose();
+        },
+        onError: (error) => {
+          toast.error('Failed to update farm. Please try again.');
+          console.error('Farm update error:', error);
+        }
+      });
+    } else {
+      createFarmMutation.mutate(farmData, {
+        onSuccess: () => {
+          toast.success('Farm created successfully!');
+          onClose();
+        },
+        onError: (error) => {
+          toast.error('Failed to create farm. Please try again.');
+          console.error('Farm creation error:', error);
+        }
+      });
+    }
   };
 
   const addCropProduction = () => {
-    setCropProductions([...cropProductions, { id: cropProductions.length + 1, cropTypeId: 1, isIrrigated: false, isInsured: false }]);
+    setCropProductions([
+      ...cropProductions,
+      {
+        id: cropProductions.length + 1,
+        cropTypeId: 1,
+        area: 0,
+        unit: totalLandUnit,
+        isIrrigated: false,
+        isInsured: false
+      }
+    ]);
   };
 
   const updateCropProduction = (
@@ -84,34 +140,14 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
   };
 
   return (
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <GenericModal isOpen={isOpen} onClose={onClose}>
+    <GenericModal title={initialFarm ? "Edit Farm" : "Create a new farm"} isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit} className="space-y-6 bg-white pt-6 max-w-4xl mx-auto">
         <div>
           <label htmlFor="farmName" className="block text-sm font-medium text-gray-700">
             Farm Name
           </label>
           <input
+            placeholder="Exemple: Green Gables"
             type="text"
             id="farmName"
             value={farmName}
@@ -123,33 +159,31 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
 
         <div className='flex space-x-4'>
           <div className='flex-1'>
-            <label htmlFor="landArea" className="block text-sm font-medium text-gray-700">
-              Land Area
-            </label>
-            <input
-              type="number"
-              id="landArea"
-              value={landArea}
-              onChange={(e) => setLandArea(e.target.value)}
-              required
-              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
-            />
-          </div>
-
-          <div className='flex-1'>
-            <label htmlFor="landUnit" className="block text-sm font-medium text-gray-700">
-              Unit of Measure
+            <label htmlFor="totalLandUnit" className="block text-sm font-medium text-gray-700 mb-1">
+              Total Land Unit
             </label>
             <select
-              id="landUnit"
-              value={landUnit}
-              onChange={(e) => setLandUnit(e.target.value)}
+              id="totalLandUnit"
+              value={totalLandUnit}
+              onChange={(e) => setTotalLandUnit(e.target.value as 'hectares' | 'acres')}
               required
               className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
             >
               <option value="hectares">Hectares</option>
               <option value="acres">Acres</option>
             </select>
+          </div>
+          <div className='flex-1'>
+            <label htmlFor='totalCropArea' className="block text-sm font-medium text-gray-700">
+              Total Crop Area
+            </label>
+            <input
+              type="text"
+              id='totalCropArea'
+              value={`${totalCropArea.toFixed(2)} ${totalLandUnit}`}
+              readOnly
+              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 px-3 py-2"
+            />
           </div>
         </div>
 
@@ -158,7 +192,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {cropTypes && cropProductions.map((production, index) => (
               <div key={index} className="border rounded-md p-4 space-y-3 bg-gray-50">
-                <div>
+                <div className="flex-1">
                   <label htmlFor={`cropType-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
                     Crop Type
                   </label>
@@ -174,8 +208,8 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
                       </option>
                     ))}
                   </select>
-                </div>
 
+                </div>
                 <div className="flex space-x-4">
                   <label className="inline-flex items-center flex-1">
                     <input
@@ -197,6 +231,34 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
                     <span className="ml-2">Is Insured</span>
                   </label>
                 </div>
+                <div className="flex space-x-4">
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Crop Area
+                    </label>
+                    <input
+                      type="number"
+                      value={production.area}
+                      onChange={(e) => updateCropProduction(index, 'area', Number(e.target.value))}
+                      className="block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
+                      placeholder="123"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label htmlFor={`unit-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                      Unit of measure
+                    </label>
+                    <select
+                      id={`unit-${index}`}
+                      value={production.unit}
+                      onChange={(e) => updateCropProduction(index, 'unit', e.target.value)}
+                      className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
+                    >
+                      <option value="hectares">Hectares</option>
+                      <option value="acres">Acres</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -208,7 +270,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
               className="flex items-center justify-center mx-auto px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-950 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
             >
               <LandPlotIcon className="mr-2 h-4 w-4" />
-              Add Crop Production
+              Add Crop
             </button>
           </div>
         </div>
@@ -237,10 +299,13 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({ isOpen, onClose }) =>
 
         </div>
 
-        <MapComponent farm={{
-          farmName: farmName || 'New Farm',
-          address: addressDetails,
-        }} />
+        <MapComponent
+          key={`${addressDetails.latitude}-${addressDetails.longitude}`}
+          farm={{
+            farmName: farmName || 'New Farm',
+            address: addressDetails,
+          }}
+        />
 
         <div className="flex justify-end">
           <button
