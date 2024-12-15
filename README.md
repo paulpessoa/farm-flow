@@ -3,7 +3,7 @@
 ## General Documentation
 
 ### Project Overview
-This project is designed to [briefly describe the purpose and functionality of the project]. It aims to [explain the main goals and features].
+This project involves designing and developing an application to manage a collection of farms and their associated crop productions.
 
 ### Deployment Instructions
 To deploy this project, follow these steps:
