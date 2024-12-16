@@ -131,9 +131,14 @@ const FarmList: React.FC = () => {
           ))}
         </ul>
       ) : (
-        <div className="text-center py-8">
-          <p className="text-lg text-gray-600">No farms found for "{searchTerm}".</p>
-        </div>
+        farms?.length ?
+          <div className="text-center py-8">
+            <p className="text-lg text-gray-600">No farms found for "{searchTerm}".</p>
+          </div>
+          :
+          <div className="text-center py-8">
+            <p className="text-lg text-gray-600">No farms registered.</p>
+          </div>
       )}
       <GenericModal
         title='Farm Details'

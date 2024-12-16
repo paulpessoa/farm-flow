@@ -37,6 +37,10 @@ To set up a local development environment, follow these steps:
    ```
 3. Start the development server:
    ```bash
+   npm run server
+   ```
+   ```bash
    npm run dev
    ```
-4. Open your browser and navigate to `http://localhost:5173` (or the specified port).
+4. The local VITE_API_URL is running at `http://localhost:3001` (Make sure to configure the appropriate environment variable, if necessary.)
+5. Open your browser and navigate to `http://localhost:5173` (or the port specified in your development server logs).
