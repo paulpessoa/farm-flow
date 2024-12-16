@@ -6,29 +6,29 @@
       "landArea": 100,
       "landUnit": "hectares",
       "address": {
-        "latitude": -2.9964,
-        "longitude": -47.3532,
-        "fullAddress": "Fazenda Paragominas, Pará"
+        "latitude": -2.5117266,
+        "longitude": -46.9594793,
+        "fullAddress": "Fazenda Tijuca"
       },
       "cropProductions": [
         {
-          "id": 1,
-          "cropTypeId": 1,
+          "id": 2,
+          "cropTypeId": "2",
           "isIrrigated": true,
-          "isInsured": false,
-          "area": 12,
+          "isInsured": true,
+          "area": "20",
           "unit": "acres"
         },
         {
-          "id": 2,
-          "cropTypeId": 1,
-          "isIrrigated": true,
-          "isInsured": true,
-          "area": 21,
-          "unit": "acres"
+          "id": 3,
+          "cropTypeId": "3",
+          "area": "30",
+          "unit": "hectares",
+          "isIrrigated": false,
+          "isInsured": true
         }
       ],
-      "totalLandArea": 13.354646810060501,
+      "totalLandArea": 38.09,
       "totalLandUnit": "hectares",
       "createdAt": "2024-12-15T07:12:22.462Z"
     },
@@ -38,9 +38,9 @@
       "landArea": 433,
       "landUnit": "hectares",
       "address": {
-        "latitude": -29.94,
-        "longitude": -51.115,
-        "fullAddress": "Fazenda Boa Vista, Rio Grande do Sul"
+        "latitude": 41.6521807,
+        "longitude": -4.728605,
+        "fullAddress": "Valladolid"
       },
       "cropProductions": [
         {
@@ -77,7 +77,7 @@
         }
       ],
       "createdAt": "2024-12-15T07:12:52.695Z",
-      "totalLandArea": 87.47180348434875,
+      "totalLandArea": 87.47,
       "totalLandUnit": "hectares"
     },
     {
@@ -86,9 +86,9 @@
       "landArea": 400,
       "landUnit": "hectares",
       "address": {
-        "latitude": -4.9751759,
-        "longitude": -38.6368754,
-        "fullAddress": "Ibicuitinga"
+        "latitude": -8.8905889,
+        "longitude": -36.4930896,
+        "fullAddress": "Garanhuns"
       },
       "cropProductions": [
         {
@@ -124,8 +124,8 @@
           "isInsured": false
         }
       ],
-      "createdAt": "2024-12-15T07:12:03.000Z",
-      "totalLandArea": 1090.2248032213029,
+      "createdAt": "2024-12-16T14:02:38.099Z",
+      "totalLandArea": 1090.23,
       "totalLandUnit": "hectares"
     },
     {
@@ -168,13 +168,13 @@
     },
     {
       "id": "cc2d",
-      "farmName": "Rondonopolis",
-      "totalLandArea": 7698.4514,
+      "farmName": "Boston Park Farm",
+      "totalLandArea": 7821.459999999999,
       "totalLandUnit": "acres",
       "address": {
-        "latitude": -25.4295963,
-        "longitude": -49.2712724,
-        "fullAddress": "Curitiba"
+        "latitude": 52.09391295,
+        "longitude": -1.9812546047293076,
+        "fullAddress": "Boston Farm"
       },
       "cropProductions": [
         {
@@ -200,9 +200,17 @@
           "unit": "hectares",
           "isIrrigated": true,
           "isInsured": false
+        },
+        {
+          "id": 4,
+          "cropTypeId": "5",
+          "area": "123",
+          "unit": "acres",
+          "isIrrigated": false,
+          "isInsured": false
         }
       ],
-      "createdAt": "2024-12-15T07:16:03.938Z"
+      "createdAt": "2024-12-16T14:00:21.985Z"
     }
   ],
   "crop-types": [

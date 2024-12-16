@@ -1,6 +1,6 @@
 import { Droplet, Shield, Wheat, Leaf } from 'lucide-react';
 import { useGetFarmDetail } from '../hooks/useGetFarmDetail';
-import { getCropTypeName } from '../utils/cropTypes';
+import { getCropTypeName } from '../utils';
 import { MapComponent } from './MapComponent';
 
 interface FarmDetailProps {
