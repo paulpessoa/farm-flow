@@ -5,6 +5,15 @@
 ### Project Overview
 This project involves designing and developing an application to manage a collection of farms and their associated crop productions.
 
+### Application Demo
+![Farm Flow Demo](./public/farm-flow.gif)
+
+[**Open the deployed application**](https://farm-flow-pi.vercel.app){:target="_blank"}
+
+
+### Project Overview
+This project involves designing and developing an application to manage a collection of farms and their associated crop productions.
+
 ### Deployment Instructions
 To deploy this project, follow these steps:
 1. Clone the repository:
