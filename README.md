@@ -6,7 +6,7 @@
 This project involves designing and developing an application to manage a collection of farms and their associated crop productions.
 
 ### Application Demo [**https://farm-flow-pi.vercel.app**](https://farm-flow-pi.vercel.app)
-![Farm Flow Demo](./public/farm--flow.gif)
+![Farm Flow Demo](./public/farm-flow.gif)
 
 
 
