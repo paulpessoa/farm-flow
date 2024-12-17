@@ -1,5 +1,36 @@
 {
-  "farms": [],
+  "farms": [
+    {
+      "id": "be58",
+      "farmName": "Ola",
+      "totalLandUnit": "acres",
+      "address": {
+        "latitude": -3.7304512,
+        "longitude": -38.5217989,
+        "fullAddress": "Fortaleza"
+      },
+      "cropProductions": [
+        {
+          "id": 1,
+          "cropTypeId": "2",
+          "area": "24",
+          "unit": "acres",
+          "isIrrigated": true,
+          "isInsured": false
+        },
+        {
+          "id": 2,
+          "cropTypeId": "4",
+          "area": "4",
+          "unit": "hectares",
+          "isIrrigated": true,
+          "isInsured": true
+        }
+      ],
+      "totalLandArea": 33.88,
+      "createdAt": "2024-12-17T01:19:02.542Z"
+    }
+  ],
   "crop-types": [
     {
       "id": "1",

@@ -87,7 +87,7 @@ const FarmList: React.FC = () => {
           </select>
         </div>
       </div>
-      {filteredAndSortedFarms && filteredAndSortedFarms.length > 0 ? (
+      {farms?.length && filteredAndSortedFarms && filteredAndSortedFarms.length > 0 ? (
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredAndSortedFarms.map((farm, index) => (
             <li
@@ -103,7 +103,7 @@ const FarmList: React.FC = () => {
                     {farm.totalLandArea?.toLocaleString()} {farm.totalLandUnit}
                   </p>
                 </div>
-                <div className="flex items-center space-x-2"> {/* Added space between buttons */}
+                <div className="flex items-center space-x-2">
                   <button
                     onClick={() => handleDetailFarm(farm)}
                     className="text-blue-500 hover:text-blue-700"
@@ -116,7 +116,7 @@ const FarmList: React.FC = () => {
                     onClick={() => handleEditFarm(farm)}
                     className="text-blue-500 hover:text-blue-700"
                     title="Farm Edit"
-                    data-testid={`button-edit-farm-${index}`} // Adicionando data-testid para o botão de edição
+                    data-testid={`button-edit-farm-${index}`}
                   >
                     <Edit2Icon className="h-5 w-5 text-indigo-950" />
                   </button>
@@ -124,7 +124,7 @@ const FarmList: React.FC = () => {
                     onClick={() => handleDeleteFarm(farm)}
                     className="text-red-500 hover:text-red-700"
                     title="Farm Delete"
-                    data-testid={`button-delete-farm-${index}`} // Adicionando data-testid para o botão de deleção
+                    data-testid={`button-delete-farm-${index}`}
                   >
                     <TrashIcon className="h-5 w-5 text-red-550" />
                   </button>
@@ -133,15 +133,14 @@ const FarmList: React.FC = () => {
             </li>
           ))}
         </ul>
+      ) : farms?.length === 0 ? (
+        <div className="text-center py-8">
+          <p className="text-lg text-gray-600">No farms registered.</p>
+        </div>
       ) : (
-        farms?.length ?
-          <div className="text-center py-8">
-            <p className="text-lg text-gray-600">No farms found for "{searchTerm}".</p>
-          </div>
-          :
-          <div className="text-center py-8">
-            <p className="text-lg text-gray-600">No farms registered.</p>
-          </div>
+        <div className="text-center py-8">
+          <p className="text-lg text-gray-600">No farms found for "{searchTerm}".</p>
+        </div>
       )}
       <GenericModal
         title='Farm Details'
