@@ -16,13 +16,13 @@ const CropProductionForm: React.FC<CropProductionProps> = ({
 }) => (
   <div
     className="border rounded-md p-4 space-y-3 bg-gray-50"
-    data-testid={`tt-crop-production-${index}`}
+    data-testid={`crop-production-${index}`}
   >
      <button
         type="button"
         onClick={() => onRemove(index)}
         className="text-red-500 font-bold hover:text-red-700 float-right"
-        data-testid={`tt-button-remove-crop-${index}`}
+        data-testid={`button-remove-crop-${index}`}
       >
         ✕
       </button>
@@ -40,7 +40,7 @@ const CropProductionForm: React.FC<CropProductionProps> = ({
           <select
             {...field}
             className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
-            data-testid={`tt-select-crop-type-${index}`}
+            data-testid={`select-crop-type-${index}`}
           >
             {cropTypes.map((cropType: CropType) => (
               <option key={cropType.id} value={cropType.id}>
@@ -63,7 +63,7 @@ const CropProductionForm: React.FC<CropProductionProps> = ({
               checked={value}
               onChange={(e) => onChange(e.target.checked)}
               className="rounded border-gray-300 text-blue-500 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-              data-testid={`tt-checkbox-irrigated-${index}`}
+              data-testid={`checkbox-irrigated-${index}`}
             />
             <span className="ml-2">Is Irrigated</span>
           </label>
@@ -80,7 +80,7 @@ const CropProductionForm: React.FC<CropProductionProps> = ({
               checked={value}
               onChange={(e) => onChange(e.target.checked)}
               className="rounded border-gray-300 text-blue-500 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-              data-testid={`tt-checkbox-insured-${index}`}
+              data-testid={`checkbox-insured-${index}`}
             />
             <span className="ml-2">Is Insured</span>
           </label>
@@ -103,7 +103,7 @@ const CropProductionForm: React.FC<CropProductionProps> = ({
               {...field}
               className="block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
               placeholder="123"
-              data-testid={`tt-input-crop-area-${index}`}
+              data-testid={`input-crop-area-${index}`}
             />
           )}
         />
@@ -122,7 +122,7 @@ const CropProductionForm: React.FC<CropProductionProps> = ({
             <select
               {...field}
               className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
-              data-testid={`tt-select-crop-unit-${index}`}
+              data-testid={`select-crop-unit-${index}`}
             >
               <option value="hectares">Hectares</option>
               <option value="acres">Acres</option>

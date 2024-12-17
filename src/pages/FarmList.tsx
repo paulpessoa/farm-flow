@@ -89,7 +89,7 @@ const FarmList: React.FC = () => {
       </div>
       {filteredAndSortedFarms && filteredAndSortedFarms.length > 0 ? (
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredAndSortedFarms.map((farm) => (
+          {filteredAndSortedFarms.map((farm, index) => (
             <li
               key={farm.id}
               className="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow"
@@ -108,6 +108,7 @@ const FarmList: React.FC = () => {
                     onClick={() => handleDetailFarm(farm)}
                     className="text-blue-500 hover:text-blue-700"
                     title="Farm Details"
+                    data-testid="button-detail-farm"
                   >
                     <ZoomInIcon className="h-5 w-5 text-indigo-950" />
                   </button>
@@ -115,6 +116,7 @@ const FarmList: React.FC = () => {
                     onClick={() => handleEditFarm(farm)}
                     className="text-blue-500 hover:text-blue-700"
                     title="Farm Edit"
+                    data-testid={`button-edit-farm-${index}`} // Adicionando data-testid para o botão de edição
                   >
                     <Edit2Icon className="h-5 w-5 text-indigo-950" />
                   </button>
@@ -122,6 +124,7 @@ const FarmList: React.FC = () => {
                     onClick={() => handleDeleteFarm(farm)}
                     className="text-red-500 hover:text-red-700"
                     title="Farm Delete"
+                    data-testid={`button-delete-farm-${index}`} // Adicionando data-testid para o botão de deleção
                   >
                     <TrashIcon className="h-5 w-5 text-red-550" />
                   </button>
@@ -165,7 +168,7 @@ const FarmList: React.FC = () => {
       <DeleteFarmModal
         isOpen={isDeleteModalOpen}
         onClose={() => setDeleteModalOpen(false)}
-        id={selectedFarm?.id || ""}
+        id={selectedFarm?.id ?? ""}
       />
     </div>
   );

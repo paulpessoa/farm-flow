@@ -139,7 +139,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-6 bg-white pt-6 max-w-4xl mx-auto"
-        data-testid="tt-farm-form"
+        data-testid="farm-form"
       >
         {/* Farm Name Input */}
         <div>
@@ -152,7 +152,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
             type="text"
             id="farmName"
             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
-            data-testid="tt-input-farm-name"
+            data-testid="input-farm-name"
           />
         </div>
 
@@ -169,7 +169,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
                 <select
                   {...field}
                   className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
-                  data-testid="tt-select-land-unit"
+                  data-testid="select-land-unit"
                 >
                   <option value="hectares">Hectares</option>
                   <option value="acres">Acres</option>
@@ -187,7 +187,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
               value={`${totalCropArea.toLocaleString()} ${watchTotalLandUnit}`}
               readOnly
               className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 px-3 py-2"
-              data-testid="tt-total-crop-area"
+              data-testid="total-crop-area"
             />
           </div>
         </div>
@@ -203,6 +203,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
                 index={index}
                 cropTypes={cropTypes}
                 onRemove={remove}
+                data-testid={`crop-production-${index}`}
               />
             ))}
           </div>
@@ -219,7 +220,7 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
                 isInsured: false
               })}
               className="flex items-center justify-center mx-auto px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-950 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
-              data-testid="tt-button-add-crop"
+              data-testid="button-add-crop"
             >
               <LandPlotIcon className="mr-2 h-4 w-4" />
               Add Crop
@@ -237,13 +238,13 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
               {...register('address.fullAddress')}
               type="text"
               className="block w-full rounded-md border border-gray-300 shadow-sm bg-gray-50 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 px-3 py-2"
-              data-testid="tt-input-address"
+              data-testid="input-address"
             />
             <button
               type="button"
               onClick={handleAddressSearch}
               className="flex items-center justify-center mx-auto px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-950 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
-              data-testid="tt-button-search-address"
+              data-testid="button-search-address"
             >
               <MapPinHouseIcon className="mr-2 h-4 w-4" />
               Search
@@ -266,10 +267,10 @@ const CreateFarmModal: React.FC<CreateFarmModalProps> = ({
             disabled={!isDirty || !isFormValid()}
             type="submit"
             className={`flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md transition-colors duration-200 ${!isDirty || !isFormValid()
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'text-white bg-indigo-950 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'text-white bg-indigo-950 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
               }`}
-            data-testid="tt-button-submit-farm"
+            data-testid="button-submit-farm"
           >
             <Leaf className="mr-2 h-4 w-4" />
             {initialFarm ? 'Update Farm' : 'Create Farm'}
