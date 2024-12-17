@@ -52,3 +52,15 @@ To set up a local development environment, follow these steps:
    ```
 4. The local VITE_API_URL is running at `http://localhost:3001` (Make sure to configure the appropriate environment variable, if necessary.)
 5. Open your browser and navigate to `http://localhost:5173` (or the port specified in your development server logs).
+
+### Testing Instructions
+For testing, this project uses Cypress for end-to-end testing and Vitest with React Testing Library (RTL) for unit and integration tests. To run the tests, follow these steps:
+1. For end-to-end testing with Cypress, open the Cypress test runner:
+   ```bash
+   npm cypress:open
+   ```
+2. Follow the prompts in the Cypress interface to select and run your tests. You can also run tests in headless mode using:
+   ```bash
+   npm cypress:run
+   ```
+3. Review the test results in the terminal or the Cypress dashboard for detailed insights on test performance and coverage.
